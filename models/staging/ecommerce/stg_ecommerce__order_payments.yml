@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: stg_ecommerce__order_payments
+    description: "Order Payments related  data at staging phase"
+    columns:
+      - name: order_id
+      - name: payment_sequential
+      - name: payment_type
+      - name: payment_installments
+      - name: payment_value
