@@ -13,4 +13,4 @@ select
     customer_city,
     customer_state
 
-from {{source('ecommerce', 'customers')}}
+from {{source('stg_ecommerce__customers', 'customers')}}
