@@ -1,0 +1,20 @@
+
+version: 2
+
+models:
+  - name: stg_ecommerce__order_reviews
+    description: "Order review data at staging phase"
+    columns:
+      - name: order_review_sk
+        tests:
+          - not_null
+          - unique
+      - name: review_id
+        tests:
+         - not_null
+      - name: order_id
+        tests:
+         - not_null
+      - name: review_score
+      - name: review_creation_date
+      - name: review_answer_timestamp

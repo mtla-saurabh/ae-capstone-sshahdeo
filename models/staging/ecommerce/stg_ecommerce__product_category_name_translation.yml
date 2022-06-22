@@ -1,0 +1,10 @@
+
+
+version: 2
+
+models:
+  - name: stg_ecommerce__product_category_name_translation
+    description: "TODO"
+    columns:
+      - name: string_field_0
+      - name: string_field_1
