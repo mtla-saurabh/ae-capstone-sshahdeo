@@ -1,9 +1,9 @@
 
 select
     -- primary key
+    seller_id,
 
     -- foreign keys
-    seller_id,
 
     -- timestamps
 

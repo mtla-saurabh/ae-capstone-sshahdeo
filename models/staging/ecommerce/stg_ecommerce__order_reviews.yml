@@ -17,4 +17,5 @@ models:
          - not_null
       - name: review_score
       - name: review_creation_date
+         - not_null
       - name: review_answer_timestamp

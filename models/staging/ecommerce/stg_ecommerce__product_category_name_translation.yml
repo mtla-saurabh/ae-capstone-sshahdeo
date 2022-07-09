@@ -6,5 +6,5 @@ models:
   - name: stg_ecommerce__product_category_name_translation
     description: "TODO"
     columns:
-      - name: string_field_0
-      - name: string_field_1
+      - name: product_category_name_portuguese
+      - name: product_category_name_english

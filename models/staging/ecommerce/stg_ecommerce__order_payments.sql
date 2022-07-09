@@ -2,10 +2,10 @@
 
 select
     -- primary key
+    {{ dbt_utils.surrogate_key(['order_id', 'payment_sequential']) }} as order_payment_sk,
 
     -- foreign keys
     order_id,
-
     -- timestamps
 
     -- dimensions

@@ -6,9 +6,15 @@ models:
     description: "Products data at staging phase"
     columns:
       - name: product_id
+        tests:
+          - not_null
+          - unique
       - name: product_category_name
-      - name: product_name_lenght
-      - name: product_description_lenght
+        tests:
+          - assert_nulls_below_pct:
+              threshold_pct: 1.86
+      - name: product_name_length
+      - name: product_description_length
       - name: product_photos_qty
       - name: product_weight_g
       - name: product_length_cm
