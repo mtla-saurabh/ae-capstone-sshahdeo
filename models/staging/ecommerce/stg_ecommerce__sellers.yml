@@ -1,0 +1,14 @@
+
+version: 2
+
+models:
+  - name: stg_ecommerce__sellers
+    description: "Sellers data at staging phase"
+    columns:
+      - name: seller_id
+        tests:
+          - not_null
+          - unique
+      - name: seller_zip_code_prefix
+      - name: seller_city
+      - name: seller_state

@@ -1,0 +1,16 @@
+
+version: 2
+
+models:
+  - name: stg_ecommerce__geolocations
+    description: "Geolocation data at staging phase"
+    columns:
+      - name: geolocation_sk
+        tests:
+          - not_null
+          - unique
+      - name: geolocation_zip_code_prefix
+      - name: geolocation_lat
+      - name: geolocation_lng
+      - name: geolocation_city
+      - name: geolocation_state
