@@ -1,0 +1,29 @@
+
+
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    description: "Orders data at staging phase"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+      - name: order_status
+      - name: order_purchase_timestamp
+         - not_null
+      - name: order_approved_at
+        tests:
+          - assert_nulls_below_pct:
+              threshold_pct: 0.161
+      - name: order_delivered_carrier_date
+        tests:
+          - assert_nulls_below_pct:
+              threshold_pct: 1.8
+      - name: order_delivered_customer_date
+        tests:
+          - assert_nulls_below_pct:
+              threshold_pct: 2.99
+      - name: order_estimated_delivery_date
