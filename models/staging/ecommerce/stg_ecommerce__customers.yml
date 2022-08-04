@@ -1,0 +1,18 @@
+
+version: 2
+
+models:
+  - name: stg_ecommerce__customers
+    description: "Customer data at staging phase"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_unique_id
+        tests:
+          - not_null
+      - name: customer_zip_code_prefix
+      - name: customer_city
+      - name: customer_state
+      
