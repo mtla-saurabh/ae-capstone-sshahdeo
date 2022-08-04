@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: dim_customers
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_ecommerce__customers')
+    description: "Table contains metrics for each customer. This test will compare row counts with staging customer table to ensure that dim_customers contains unique row for each Customer"
+    columns:
+      - name: customer_id
+        description:  "Primary Key for the table"
+        tests:
+          - not_null
+          - unique
+      - name: customer_unique_id
+      - name: customer_zip_code_prefix
+      - name: customer_city
+      - name: customer_state
+      - name: first_order_approved_at
+      - name: last_order_approved_at
+      - name: review_score_avg
+      - name: customer_lifespan
+      - name: sum_purchase_amount
+      - name: count_orders
