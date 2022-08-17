@@ -1,18 +1,20 @@
-
+---
 version: 2
 
 models:
+
   - name: stg_ecommerce__customers
-    description: "Customer data at staging phase"
+    description: "The customer staging table."
     columns:
       - name: customer_id
+        description: "Primary key of the customer table."
         tests:
           - not_null
           - unique
       - name: customer_unique_id
+        description: "1 customer_unique_id can map to many customer_ids.A customer can only have 1 customer_unique_id"
         tests:
           - not_null
       - name: customer_zip_code_prefix
       - name: customer_city
       - name: customer_state
-      

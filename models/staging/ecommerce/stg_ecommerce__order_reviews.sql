@@ -1,17 +1,26 @@
+with order_reviews as (
 
-select
-    -- primary key
-    {{ dbt_utils.surrogate_key(['review_id', 'order_id']) }} as order_review_sk,
+    select * from {{ source('ecommerce','order_reviews') }}
 
-    -- foreign keys
-    review_id,
-    order_id,
+),
 
-    -- timestamps
-    review_creation_date,
-    review_answer_timestamp,
+final as (
+    select
+        -- primary key
+        {{ dbt_utils.surrogate_key(['review_id', 'order_id']) }} as order_review_sk,
 
-    -- dimensions
-    review_score
+        -- foreign keys
+        review_id,
+        order_id,
 
-from {{source('ecommerce', 'order_reviews')}}
+        -- timestamps
+        review_creation_date,
+        review_answer_timestamp,
+
+        -- dimensions
+        review_score
+
+    from order_reviews
+)
+
+select * from final

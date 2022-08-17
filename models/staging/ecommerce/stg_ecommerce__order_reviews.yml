@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -11,11 +10,11 @@ models:
           - unique
       - name: review_id
         tests:
-         - not_null
+          - not_null
       - name: order_id
         tests:
-         - not_null
+          - not_null
       - name: review_score
       - name: review_creation_date
-         - not_null
+          - not_null
       - name: review_answer_timestamp

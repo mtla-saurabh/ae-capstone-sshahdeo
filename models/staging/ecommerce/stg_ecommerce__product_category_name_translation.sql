@@ -1,15 +1,18 @@
+with product_category_name_translation as (
 
-select
-    -- primary key
+    select * from {{ source('ecommerce','product_category_name_translation') }}
 
-    -- foreign keys
+),
 
-    -- timestamps
+final as (
+    select
 
-    -- dimensions
-    string_field_0 as product_category_name_portuguese,
-    string_field_1 as product_category_name_english
+        -- details
+        string_field_0 as product_category_name_portuguese,
+        string_field_1 as product_category_name_english
+    from product_category_name_translation
+    -- where clause added to exclude a row containing header label
+    where string_field_0 != "product_category_name"
+)
 
-from {{source('ecommerce', 'product_category_name_translation')}}
--- where clause added to exclude a row containing header label
-where string_field_0!="product_category_name"
+select * from final
