@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -9,7 +8,7 @@ models:
     description: "This test will compare row counts with staging order items table to ensure that fct_order_items contains unique row for each combination of Order and Order Item"
     columns:
       - name: order_item_sk
-        description:  "Primary Key for the table"
+        description: "Primary Key for the table"
         tests:
           - not_null
           - unique

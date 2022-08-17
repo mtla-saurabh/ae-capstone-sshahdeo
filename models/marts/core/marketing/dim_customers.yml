@@ -8,7 +8,7 @@ models:
     description: "Table contains metrics for each customer. This test will compare row counts with staging customer table to ensure that dim_customers contains unique row for each Customer"
     columns:
       - name: customer_id
-        description:  "Primary Key for the table"
+        description: "Primary Key for the table"
         tests:
           - not_null
           - unique
