@@ -68,13 +68,13 @@ final as (
         products.product_category_name as product_category_name,
 
         -- booleans/flags
-        orders.order_approved_at = first_n_last_order.first_order_approved_at as is_first_order_of_customer,
-        orders.order_approved_at = first_n_last_order.last_order_approved_at as is_last_order_of_customer,
-
-        -- metrics
         order_items.price as price,
         latest_order_reviews.review_score as review_score,
-        first_n_last_order.customer_lifespan as customer_lifespan
+
+        -- metrics
+        first_n_last_order.customer_lifespan as customer_lifespan,
+        orders.order_approved_at = first_n_last_order.first_order_approved_at as is_first_order_of_customer,
+        orders.order_approved_at = first_n_last_order.last_order_approved_at as is_last_order_of_customer
 
     from order_items
     left outer join orders
