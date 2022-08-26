@@ -1,0 +1,40 @@
+#To run the yml linter locally run `ymllint -c .ymllint .`
+#link to config documentation: https://yamllint.readthedocs.io/en/stable/configuration.html
+
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - '.yamllint'
+
+rules:
+  braces: enable
+  brackets: enable
+  colons: enable
+  commas: enable
+  comments:
+    level: warning
+  comments-indentation:
+    level: warning
+  document-end: disable
+  document-start:
+    level: warning
+  empty-lines: enable
+  empty-values: disable
+  hyphens: enable
+  indentation: enable
+  key-duplicates: enable
+  key-ordering: disable
+  line-length:
+    max: 200
+    ignore: |
+      <add path to a specific file to skip this rule>
+  new-line-at-end-of-file: enable
+  new-lines: enable
+  octal-values: disable
+  quoted-strings: disable
+  trailing-spaces: enable
+  truthy:
+    level: warning
+
+ignore: |
+  dbt_packages/

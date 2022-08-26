@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fct_order_items
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_ecommerce__order_items')
+    description: "This test will compare row counts with staging order items table to ensure that fct_order_items contains unique row for each combination of Order and Order Item"
+    columns:
+      - name: order_item_sk
+        description: "Primary Key for the table"
+        tests:
+          - not_null
+          - unique

@@ -1,16 +1,25 @@
+with customers as (
 
-select
-    -- primary key
-    customer_id,
+    select * from {{ source('ecommerce','customers') }}
 
-    -- foreign keys
-    customer_unique_id,
+),
 
-    -- timestamps
+final as (
+    select
+        -- primary key
+        customer_id,
 
-    -- dimensions
-    customer_zip_code_prefix,
-    customer_city,
-    customer_state
+        -- foreign keys
+        customer_unique_id,
 
-from {{source('ecommerce', 'customers')}}
+        -- timestamps
+
+        -- dimensions
+        customer_zip_code_prefix,
+        customer_city,
+        customer_state
+
+    from customers
+)
+
+select * from final

@@ -1,15 +1,25 @@
+with sellers as (
 
-select
-    -- primary key
-    seller_id,
+    select * from {{ source('ecommerce','sellers') }}
 
-    -- foreign keys
+),
 
-    -- timestamps
+final as (
 
-    -- dimensions
-    seller_zip_code_prefix,
-    seller_city,
-    seller_state
+    select
+        -- primary key
+        seller_id,
 
-from {{source('ecommerce', 'sellers')}}
+        -- foreign keys
+
+        -- timestamps
+
+        -- dimensions
+        seller_zip_code_prefix,
+        seller_city,
+        seller_state
+
+    from sellers
+)
+
+select * from final
