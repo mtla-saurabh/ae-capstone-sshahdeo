@@ -28,7 +28,7 @@ first_n_last_order as (
         date_diff(max(orders.order_approved_at), min(orders.order_approved_at), day) as customer_lifespan
 
     from customers
-    left outer join orders
+    left join orders
         on customers.customer_id = orders.customer_id
     inner join cancelled_missing_orders -- Inner Join with cancelled_missing_orders ensures that Orders that are either cancelled or unavailable are not factored in when determining a customer's lifespan
         on orders.order_id = cancelled_missing_orders.order_id
@@ -43,7 +43,7 @@ order_price_agg as (
         count(distinct orders.order_id) as count_orders
 
     from orders
-    left outer join order_items
+    left join order_items
         on orders.order_id = order_items.order_id
     group by 1
 ),
@@ -64,7 +64,7 @@ review_agg as (
         avg(latest_order_reviews.review_score) as review_score_avg
 
     from latest_order_reviews
-    left outer join orders
+    left join orders
         on latest_order_reviews.order_id = orders.order_id
     group by 1
 ),
@@ -93,13 +93,13 @@ final as (
         order_price_agg.count_orders
 
     from customers
-    left outer join first_n_last_order
+    left join first_n_last_order
         on customers.customer_id = first_n_last_order.customer_id
 
-    left outer join review_agg
+    left join review_agg
         on customers.customer_id = review_agg.customer_id
 
-    left outer join order_price_agg
+    left join order_price_agg
         on customers.customer_id = order_price_agg.customer_id
 )
 

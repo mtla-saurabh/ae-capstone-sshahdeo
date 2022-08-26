@@ -31,7 +31,7 @@ first_n_last_order as (
         max(orders.order_approved_at) as last_order_approved_at,
         date_diff(max(orders.order_approved_at), min(orders.order_approved_at), day) as customer_lifespan
     from customers
-    left outer join orders
+    left join orders
         on customers.customer_id = orders.customer_id
     inner join cancelled_missing_orders -- Inner Join with cancelled_missing_orders ensures that Orders that are either cancelled or unavailable are not factored in when determining a customer's lifespan
         on orders.order_id = cancelled_missing_orders.order_id
@@ -77,13 +77,13 @@ final as (
         orders.order_approved_at = first_n_last_order.last_order_approved_at as is_last_order_of_customer
 
     from order_items
-    left outer join orders
+    left join orders
         on order_items.order_id = orders.order_id
-    left outer join products
+    left join products
         on order_items.product_id = products.product_id
-    left outer join latest_order_reviews
+    left join latest_order_reviews
         on order_items.order_id = latest_order_reviews.order_id
-    left outer join first_n_last_order
+    left join first_n_last_order
         on orders.customer_id = first_n_last_order.customer_id
 )
 
